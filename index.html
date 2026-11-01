@@ -1,193 +1,147 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>嚴選好物 ｜ 質感生活推薦</title>
-    <style>
-        :root {
-            --primary-color: #ee4d2d;
-            --primary-dark: #d73211;
-            --bg-color: #f5f5f5;
-            --card-bg: #ffffff;
-            --text-main: #222222;
-            --text-secondary: #757575;
-            --border-color: #e5e5e5;
-            --radius: 8px;
-            --shadow: 0 4px 12px rgba(0,0,0,0.06);
-            --transition: all 0.25s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>m2 美度 ｜ 蝦皮好物嚴選</title>
+<style>
+:root{--c:#ee4d2d;--c2:#ff7337;--cd:#d73211;--bg:#f5f5f5;--card:#fff;--ink:#222;--mute:#757575;--line:#e8e8e8;--soft:#fff1ed;--sh:0 2px 10px rgba(0,0,0,.06)}
+@media(prefers-color-scheme:dark){:root{--c:#ff6a45;--c2:#ff8a4d;--cd:#ff8260;--bg:#121212;--card:#1e1e1e;--ink:#f2f2f2;--mute:#9a9a9a;--line:#2d2d2d;--soft:#3a211b;--sh:0 2px 10px rgba(0,0,0,.4)}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.container{max-width:1200px;margin:0 auto;padding:0 12px}
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* 封面：主打商品 */
+.cover{background:linear-gradient(120deg,var(--c),var(--c2));padding:14px 0 18px}
+.cover .tt{color:#fff;font-weight:800;font-size:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline}
+.cover .tt span{font-size:12px;font-weight:400;opacity:.9}
+.slides{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;background:var(--card);border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.15);overflow:hidden;display:grid;grid-template-columns:1fr}
+@media(min-width:760px){.slide{grid-template-columns:1fr 1fr;flex-basis:760px}}
+.img{position:relative;overflow:hidden;aspect-ratio:1/1;background:var(--soft)}
+.img img{width:100%;height:100%;object-fit:cover;display:block}
+.slide .info{padding:16px;display:flex;flex-direction:column;gap:8px}
+.rank{align-self:flex-start;background:var(--c);color:#fff;font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px}
+.slide .name{font-size:16px;font-weight:700;line-height:1.5}
+.slide .price{font-size:30px;margin-top:auto}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);transition:all .2s}
+.dots i.on{width:18px;border-radius:3px;background:#fff}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+.section-title{font-size:18px;font-weight:800;margin:24px 0 14px;border-left:4px solid var(--c);padding-left:10px;display:flex;align-items:center}
+.section-title span{margin-left:auto;font-size:13px;font-weight:400;color:var(--mute)}
 
-        /* 頂部導覽列 */
-        header {
-            background: linear-gradient(135deg, #f53d2d, #ff6633);
-            color: #ffffff;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:720px){.product-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}}
+.product-card{background:var(--card);border-radius:10px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.product-info{padding:10px 10px 12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.product-name{font-size:13.5px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.9em}
+.price{font-weight:800;font-size:20px;color:var(--c);margin-top:auto;padding-top:2px}
+.btn{display:block;text-align:center;text-decoration:none;background:var(--c);color:#fff;font-weight:700;font-size:14px;padding:9px;border-radius:6px;margin-top:4px;transition:background .2s}
+.slide .btn{padding:13px;font-size:16px}
+.btn:hover{background:var(--cd)}
 
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+footer{text-align:center;padding:32px 16px;color:var(--mute);font-size:12px;border-top:1px solid var(--line);margin-top:48px;background:var(--card)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
 
-        header p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
+<section class="cover" aria-label="主打商品">
+  <div class="container">
+    <div class="tt">m2 美度｜官方嚴選好物<span>孫藝珍唯一指定推薦</span></div>
+    <div class="slides" id="slides"></div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
 
-        /* 主要內容容器 */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 16px;
-        }
+<div class="container">
+  <div class="section-title">熱銷商品展示<span>共 40 件</span></div>
+  <div class="product-grid" id="product-grid"></div>
+</div>
 
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-main);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 10px;
-        }
+<footer>
+  <p>價格以蝦皮頁面為準。部分連結可能為分潤連結，不影響你的購買價格。</p>
+  <p style="margin-top:6px">&copy; 2026 m2 美度推廣專區 All Rights Reserved.</p>
+</footer>
 
-        /* 商品網格佈局 */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
+<script>
+const HERO_COUNT = 5; // 封面顯示前幾個商品
+const products = [
+  { name: "【m2 美度】超能膠原新生飲12入混搭多規賣場 膠原蛋白 青春活源萃取 孫藝珍代言", price: "NT$ 980", link: "https://s.shopee.tw/6q1vXGIU6C" },
+  { name: "【m2 美度】超能膠原飲6盒組(8入/盒) 孫藝珍代言", price: "NT$ 3,888", link: "https://s.shopee.tw/6fiVKxJ7RB" },
+  { name: "【m2 美度】超能膠原飲(8入/盒) x2盒 快充膠原飲 孫藝珍代言 小姐不熙娣推薦", price: "NT$ 1,380", link: "https://s.shopee.tw/7AelvsHDQI" },
+  { name: "【m2 美度】超能膠原新生飲(8入/盒)x2盒 膠原蛋白 青春活源萃取 孫藝珍代言", price: "NT$ 1,380", link: "https://s.shopee.tw/70LLjZHqlH" },
+  { name: "【m2 美度】超能膠原C粉(30入/盒)x2盒｜維生素C 幫助吸收", price: "NT$ 1,111", link: "https://s.shopee.tw/7VHcKUFwkO" },
+  { name: "【m2 美度】超能薑黃暢飲凍 (2入/盒) 解酒果凍 (滿額贈品/加購贈品請勿直接下單)", price: "NT$ 158", link: "https://s.shopee.tw/7KyC8BGa5N" },
+  { name: "【m2 美度-限購體驗組合】超能膠原飲(8入/盒)*1+超能膠原飲(4入/盒)*1 共12包 孫藝珍唯一指定", price: "NT$ 980", link: "https://s.shopee.tw/7puSj6Eg4U" },
+  { name: "【m2 美度】超能膠原新生飲(8入/盒)x6盒 贈超能膠原蔓越莓C｜膠原蛋白 青春活源萃取 孫藝珍代言", price: "NT$ 3,888", link: "https://s.shopee.tw/7fb2WnFJPT" },
+  { name: "【m2 美度】超能珍珠燕窩膠原飲禮盒(30入/盒)｜2025燕窩升級不加價 蝦皮獨家販售 孫藝珍代言", price: "NT$ 1,688", link: "https://s.shopee.tw/8AXJ7iDPOa" },
+  { name: "【m2 美度】超能珍珠燕窩膠原飲禮盒(30入/盒)x3 贈 膠原C粉30入/水光飲8入/燕窩膠原飲8入/蔓越莓10入", price: "NT$ 5,064", link: "https://s.shopee.tw/80DsvPE2jZ" },
+  { name: "【m2 美度】超能膠原水光飲 (8入/盒) X2盒  高效玻尿酸 孫藝珍代言", price: "NT$ 990", link: "https://s.shopee.tw/8VA9WKC8ig" },
+  { name: "【m2 美度】珍珠燕窩膠原飲(8入/盒)x2｜蝦皮獨家販售 孫藝珍代言", price: "NT$ 990", link: "https://s.shopee.tw/8KqjK1Cm3f" },
+  { name: "【m2 美度】超能膠原飲/晚安飲/水光飲12入混搭多規賣場 孫藝珍代言", price: "NT$ 911", link: "https://s.shopee.tw/8pmzuwAs2m" },
+  { name: "【m2 美度】超能膠原晚安飲 (8入/盒)x6盒-孫藝珍代言 夜亮飲 新品 全新上市 GABA", price: "NT$ 3,888", link: "https://s.shopee.tw/8fTZidBVNl" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(6入/盒) 韓國原裝｜爆水炸彈膠囊", price: "NT$ 179", link: "https://s.shopee.tw/9APqJY9bMs" },
+  { name: "【m2 美度】超能膠原晚安飲 (8入/盒)x2盒-孫藝珍代言 夜亮飲 新品 全新上市 GABA", price: "NT$ 1,380", link: "https://s.shopee.tw/906Q7FAEhr" },
+  { name: "【m2 美度】超能膠原水光飲 (8入/盒) x6盒｜贈品請選規格，售完不補", price: "NT$ 3,111", link: "https://s.shopee.tw/9V2giA8Kgy" },
+  { name: "【m2 美度】超能馬甲果凍(50入/盒)x1盒 馬甲凍", price: "NT$ 888", link: "https://s.shopee.tw/9KjGVr8y1x" },
+  { name: "【m2 美度】韓流超能窈窕錠EX(30錠/盒)x3+韓流超能馬甲錠EX(30錠/盒)x3", price: "NT$ 1,980", link: "https://s.shopee.tw/9pfX6m7414" },
+  { name: "【m2 美度】超能膠原莓果果凍(50入/盒)x1盒", price: "NT$ 888", link: "https://s.shopee.tw/9fM6uT7hM3" },
+  { name: "【m2 美度】珍珠燕窩膠原飲(8入/盒)x1+超能膠原水光飲 (8入/盒)x1｜蝦皮獨家販售 孫藝珍代言", price: "NT$ 990", link: "https://s.shopee.tw/AAINVO5nLA" },
+  { name: "【m2 美度】超能膠原晚安飲 (8入/盒)x1 + 超能膠原晚安飲 (4入/盒)x1 共12包 膠原夜亮飲 孫藝珍代言", price: "NT$ 980", link: "https://s.shopee.tw/9zyxJ56Qg9" },
+  { name: "【m2 美度】膠原飲/晚安飲/新生飲(8入/任選2盒) 共16入 快充膠原夜亮飲 青春活原萃取 孫藝珍代言", price: "NT$ 1,380", link: "https://s.shopee.tw/AUvDu04WfG" },
+  { name: "【m2 美度】超能膠原飲 (8入/盒)x1+超能膠原晚安飲 (4入/盒)x1 共12包", price: "NT$ 980", link: "https://s.shopee.tw/AKbnhh5A0F" },
+  { name: "【m2 美度】韓流超能閃澱AB錠(30錠/盒)窈窕錠+馬甲錠各1盒", price: "NT$ 888", link: "https://s.shopee.tw/BV1b0hrdI" },
+  { name: "【m2 美度】膠原系列超能膠原飲(8入/盒)(滿額贈品/加購贈品請勿直接下單)", price: "NT$ 1,380", link: "https://s.shopee.tw/1BbOhiUyH" },
+  { name: "【m2 美度】膠原系列超能膠原晚安飲(8入/盒)(滿額贈品/加購贈品請勿直接下單)", price: "NT$ 1,380", link: "https://s.shopee.tw/W7rzcgaxO" },
+  { name: "【m2 美度】超能膠原加法膠囊 (30入/盒)x1/2盒", price: "NT$ 1,380", link: "https://s.shopee.tw/LoRnJhEIN" },
+  { name: "【m2 美度】超能膠原水光飲 (8入/盒)x3盒+ 珍珠燕窩膠原飲(8入/盒)x3 高效玻尿酸 保濕有感 孫藝珍代言", price: "NT$ 2,880", link: "https://s.shopee.tw/qkiOEfKHU" },
+  { name: "【m2 美度】超能水光水蜜桃果凍 (50入/盒)x1盒", price: "NT$ 888", link: "https://s.shopee.tw/gRIBvfxcT" },
+  { name: "【m2 美度】超能果凍系列(50入/盒) x2盒｜超能水光/超能膠原/超能馬甲 任選賣場", price: "NT$ 1,588", link: "https://s.shopee.tw/1BNYmqe3ba" },
+  { name: "【m2 美度】超能膠原C粉(30入/盒) x6 買三送三｜贈爆水膠囊6入/新生飲4入｜贈品請選規格，售完不補", price: "NT$ 3,111", link: "https://s.shopee.tw/1148aXegwZ" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(24入/盒)x5 韓國原裝 爆水膠囊", price: "NT$ 3,280", link: "https://s.shopee.tw/1W0PBScmvg" },
+  { name: "【m2 美度】超能薑黃暢飲凍 (10入/盒) x3盒 解酒果凍", price: "NT$ 990", link: "https://s.shopee.tw/1Lgyz9dQGf" },
+  { name: "【m2 美度】超能膠原飲(8入/盒)買1送1(共16入) 混搭多規賣場 孫藝珍代言", price: "NT$ 1,380", link: "https://s.shopee.tw/1qdFa4bWFm" },
+  { name: "【m2 美度】韓流超能窈窕錠EX/超能馬甲錠EX 升級版10盒組(各5盒)", price: "NT$ 3,311", link: "https://s.shopee.tw/1gJpNlc9al" },
+  { name: "【m2 美度】超能膠原飲 (8入/盒)x3盒 孫藝珍代言 快充膠原飲 女人我最大", price: "NT$ 2,500", link: "https://s.shopee.tw/2BG5ygaFZs" },
+  { name: "【m2 美度】超能膠原C粉(30入)+珍珠燕窩膠原飲+超能膠原水光飲 2入體驗盒(2入/盒)", price: "NT$ 780", link: "https://s.shopee.tw/20wfmNasur" },
+  { name: "【m2 美度】超能膠原飲5盒組(8入/盒) 孫藝珍代言", price: "NT$ 3,450", link: "https://s.shopee.tw/2VswNIYyty" },
+  { name: "【m2 美度】韓流超能窈窕錠EX(TRX燒卡錠) (30錠/盒) x 2盒  買一送一", price: "NT$ 888", link: "https://s.shopee.tw/2LZWAzZcEx" }
+];
 
-        /* 商品卡片 */
-        .product-card {
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--border-color);
-        }
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const img=(p,i)=>`<div class="img"><img src="${i}.jpg" alt="${esc(p.name)}" loading="lazy" onerror="this.remove()"></div>`;
+const buy=(p,t)=>`<a class="btn" href="${esc(p.link)}" target="_blank" rel="noopener sponsored">${t}</a>`;
 
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
+document.getElementById('slides').innerHTML=products.slice(0,HERO_COUNT).map((p,k)=>`
+  <article class="slide">
+    ${img(p,k+1)}
+    <div class="info">
+      <span class="rank">主打推薦 No.${k+1}</span>
+      <h2 class="name">${esc(p.name)}</h2>
+      <div class="price">${esc(p.price)}</div>
+      ${buy(p,'前往蝦皮下單')}
+    </div>
+  </article>`).join('');
+document.getElementById('dots').innerHTML=products.slice(0,HERO_COUNT).map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('');
+document.getElementById('slides').addEventListener('scroll',e=>{
+  const s=e.target,i=Math.round(s.scrollLeft/(s.firstElementChild.offsetWidth+12));
+  [...document.getElementById('dots').children].forEach((d,k)=>d.classList.toggle('on',k===i));
+},{passive:true});
 
-        .product-image-wrap {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background-color: #fafafa;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-image-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .product-card:hover .product-image-wrap img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-        }
-
-        .product-name {
-            font-size: 0.90rem;
-            font-weight: 500;
-            color: var(--text-main);
-            margin-bottom: 8px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: 2.8em;
-        }
-
-        .product-price {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-        }
-
-        .product-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: auto;
-        }
-
-        .product-tag {
-            font-size: 0.75rem;
-            color: var(--primary-color);
-            background-color: rgba(238, 77, 45, 0.1);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .btn-view {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .btn-view:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* 頁尾 */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-            background-color: #ffffff;
-        }
-
-        /* 響應式微調 */
-        @media (max-width: 600px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px
+document.getElementById('product-grid').innerHTML=products.map((p,k)=>`
+  <article class="product-card">
+    ${img(p,k+1)}
+    <div class="product-info">
+      <h3 class="product-name">${esc(p.name)}</h3>
+      <div class="price">${esc(p.price)}</div>
+      ${buy(p,'立即搶購')}
+    </div>
+  </article>`).join('');
+</script>
+</body>
+</html>

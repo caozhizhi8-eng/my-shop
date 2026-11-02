@@ -78,7 +78,7 @@ footer{text-align:center;padding:32px 16px;color:var(--mute);font-size:12px;bord
 </section>
 
 <div class="container">
-  <div class="section-title">熱銷商品展示<span>共 40 件</span></div>
+  <div class="section-title">熱銷商品展示<span id="count"></span></div>
   <div class="product-grid" id="product-grid"></div>
 </div>
 
@@ -129,7 +129,59 @@ const products = [
   { name: "【m2 美度】超能膠原飲 (8入/盒)x3盒 孫藝珍代言 快充膠原飲 女人我最大", price: "NT$ 2,500", link: "https://s.shopee.tw/2BG5ygaFZs", img: "tw-11134207-820lg-mux5inpr5r7t1b.webp" },
   { name: "【m2 美度】超能膠原C粉(30入)+珍珠燕窩膠原飲+超能膠原水光飲 2入體驗盒(2入/盒)", price: "NT$ 780", link: "https://s.shopee.tw/20wfmNasur", img: "sg-11134201-82589-mtoy4b9ied4yc0.webp" },
   { name: "【m2 美度】超能膠原飲5盒組(8入/盒) 孫藝珍代言", price: "NT$ 3,450", link: "https://s.shopee.tw/2VswNIYyty", img: "tw-11134207-820l6-mux5cjzb6a6dc3.webp" },
-  { name: "【m2 美度】韓流超能窈窕錠EX(TRX燒卡錠) (30錠/盒) x 2盒  買一送一", price: "NT$ 888", link: "https://s.shopee.tw/2LZWAzZcEx", img: "sg-11134201-82582-mtoy3yvwighta2.webp" }
+  { name: "【m2 美度】韓流超能窈窕錠EX(TRX燒卡錠) (30錠/盒) x 2盒  買一送一", price: "NT$ 888", link: "https://s.shopee.tw/2LZWAzZcEx", img: "sg-11134201-82582-mtoy3yvwighta2.webp" },
+  { name: "【m2 美度】超能膠原飲/晚安飲/水光飲(4入/盒) 任選賣場", price: "NT$ 399", link: "https://s.shopee.tw/5LD9DsoMJb", img: "sg-11134201-8259t-mtoy4g4sp3443a.webp" },
+  { name: "【m2 美度】超能膠原系列單入任選賣場 膠原飲 孫藝珍代言 小姐不熙娣 小咪 醫生好辣 劉涵竹 女人我最大 小布", price: "NT$ 388", link: "https://s.shopee.tw/7puUCTeqF6", img: "sg-11134201-825as-mtoy4hnur7d2d2.webp" },
+  { name: "【m2 美度】韓流超能窈窕錠EX(TRX燒卡錠) (30錠/盒) x 2盒  買一送一", price: "NT$ 888", link: "https://s.shopee.tw/7fb40AfTa5", img: "sg-11134201-82582-mtoy3yvwighta2 (1).webp" },
+  { name: "【m2 美度】超能膠原新生飲(8入/盒)x3盒 膠原蛋白 青春活源萃取 孫藝珍代言", price: "NT$ 2,280", link: "https://s.shopee.tw/7VHdnrg6v4", img: "tw-11134207-820l6-mux61uepbjeyad.webp" },
+  { name: "【m2 美度】珍珠燕窩膠原飲(8入/盒)+珍珠燕窩膠原飲+超能膠原水光飲 2入體驗盒(2入/盒)", price: "NT$ 780", link: "https://s.shopee.tw/7KyDbYgkG3", img: "sg-11134201-825b8-mtoy4btmb3ep2d.webp" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(24入/盒)x2 韓國原裝｜爆水炸彈膠囊", price: "NT$ 1,680", link: "https://s.shopee.tw/7AenPFhNb2", img: "sg-11134201-825b3-mtoy3lustngg6a.webp" },
+  { name: "【m2 美度】超能膠原B群糖衣錠(60錠/盒) 1盒/2盒/3盒/5盒 任選賣場", price: "NT$ 990", link: "https://s.shopee.tw/70LNCwi0w1", img: "tw-11134207-820le-mux5q1wqq5ft17.webp" },
+  { name: "【m2 美度】超能膠原水光飲(8入/盒)+珍珠燕窩膠原飲+超能膠原水光飲 2入體驗盒(2入/盒)", price: "NT$ 780", link: "https://s.shopee.tw/6q1x0dieH0", img: "sg-11134201-825b1-mtoy4bv680sk2b.webp" },
+  { name: "【m2 美度】韓流超能馬甲錠EX(30錠/盒)x4/6盒", price: "NT$ 1,980", link: "https://s.shopee.tw/6fiWoKjHbz", img: "tw-11134207-820li-muox864v0sn717.webp" },
+  { name: "【m2 美度】超能薑黃暢飲凍 (10入/盒) x2盒 解酒果凍", price: "NT$ 688", link: "https://s.shopee.tw/9APrmvZlXU", img: "sg-11134201-825a5-mtoy3lwkdw5k97.webp" },
+  { name: "【m2 美度】新客體驗-超能膠原C粉(30入/盒)x1+超能膠原飲(4入/盒)膠原飲/晚安飲/水光飲/新生飲 任選一", price: "NT$ 980", link: "https://s.shopee.tw/906RacaOsT", img: "sg-11134201-8259k-mtoy3w132gp006.webp" },
+  { name: "【m2 美度】韓流超能馬甲錠EX(30錠/盒) x2盒  買一送一", price: "NT$ 888", link: "https://s.shopee.tw/8pn1OJb2DS", img: "sg-11134201-8259k-mtoy3w67qozo77.webp" },
+  { name: "【m2 美度】超能持續型複合C膠囊(30顆/袋) 買1送1組", price: "NT$ 1,380", link: "https://s.shopee.tw/8fTbC0bfYR", img: "sg-11134201-8259y-mtoy3vkp3y0w1c.webp" },
+  { name: "【m2 美度】超能膠原晚安飲 (8入/盒)x5盒-孫藝珍代言 夜亮飲 新品 全新上市 GABA", price: "NT$ 3,450", link: "https://s.shopee.tw/8VAAzhcItQ", img: "tw-11134207-820la-mux5ldznxts35b.webp" },
+  { name: "【m2 美度】超能膠原晚安飲 (8入/盒)x3盒-孫藝珍代言 夜亮飲 新品 全新上市 GABA", price: "NT$ 2,500", link: "https://s.shopee.tw/8KqknOcwEP", img: "tw-11134207-820ld-mux633imrpjd94.webp" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(24入/盒)x1 韓國原裝｜爆水炸彈膠囊", price: "NT$ 880", link: "https://s.shopee.tw/8AXKb5dZZO", img: "sg-11134201-825av-mtoy4302ubk082.webp" },
+  { name: "【m2 美度】韓流超能窈窕錠EX(TRX燒卡錠) (30錠/盒)x4/6盒", price: "NT$ 1,980", link: "https://s.shopee.tw/80DuOmeCuN", img: "tw-11134207-820l8-muox7gpqqiva94.webp" },
+  { name: "【m2 美度】超能膠原莓果果凍 買1送1組(10入/盒)", price: "NT$ 688", link: "https://s.shopee.tw/AUvFNNUgps", img: "sg-11134201-8259y-mtoy3o86407683.webp" },
+  { name: "【m2 美度】超能蔓越莓C(10入/盒) - 1盒/2盒/3盒/5盒 任選賣場｜新品搶先體驗", price: "NT$ 799", link: "https://s.shopee.tw/AKbpB4VKAr", img: "sg-11134201-825a5-mtoy3nlbzqiu3b.webp" },
+  { name: "【m2 美度】超能馬甲果凍(7入/盒)x2盒 買一送一｜馬甲凍 新品搶先體驗", price: "NT$ 799", link: "https://s.shopee.tw/AAIOylVxVq", img: "sg-11134201-82592-mtoy3pp6nqivc7.webp" },
+  { name: "【m2 美度】極羨益生菌(10入/盒)x2盒 買一送一", price: "NT$ 799", link: "https://s.shopee.tw/9zyymSWaqp", img: "sg-11134201-8259o-mtoy3ltwy32a04.webp" },
+  { name: "【m2美度】超能康普茶 無糖紅茶(10入/盒)X2盒", price: "NT$ 799", link: "https://s.shopee.tw/9pfYa9XEBo", img: "sg-11134201-82582-mtoy4983afig10.webp" },
+  { name: "【m2 美度】超能薑黃暢飲凍 (10入/盒) x5盒 解酒果凍", price: "NT$ 888", link: "https://s.shopee.tw/9fM8NqXrWn", img: "tw-11134207-820ld-mux5xzzk0sg0e6.webp" },
+  { name: "【m2 美度】超能薑黃暢飲凍 (2入/盒) 解酒果凍 (滿額贈品/加購贈品請勿直接下單)", price: "NT$ 158", link: "https://s.shopee.tw/9V2iBXYUrm", img: "sg-11134201-8259h-mtoy3wf8kiro84.webp" },
+  { name: "【m2美度】BETTER ME 薑汁檸檬代謝飲(7入/盒)", price: "NT$ 599", link: "https://s.shopee.tw/9KjHzEZ8Cl", img: "sg-11134201-8258b-mtoy4a1cms5dd2.webp" },
+  { name: "【m2美度】BETTER ME 西梅康普順暢飲(7入/盒)", price: "NT$ 599", link: "https://s.shopee.tw/1BNaGE4DmC", img: "sg-11134201-825ak-mtoy3xrw854wf7.webp" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(6入/盒) (滿額贈品/加購贈品請勿直接下單)", price: "NT$ 480", link: "https://s.shopee.tw/114A3v4r7B", img: "sg-11134201-825al-mtoy3yuigbgq8d.webp" },
+  { name: "【m2 美度】水光水蜜桃果凍 買1送1組(10入/盒)", price: "NT$ 688", link: "https://s.shopee.tw/qkjrc5USA", img: "tw-11134207-820lc-mtq67sn2ztvn4c.webp" },
+  { name: "【m2美度】 BETTER ME 蘋果枸杞亮妍飲(7入/盒)", price: "NT$ 599", link: "https://s.shopee.tw/gRJfJ67n9", img: "sg-11134201-82588-mtoy40h01k3u17.webp" },
+  { name: "【m2 美度】DAY 13:00 輕盈水光組｜超能膠原水光飲8入x2盒+西梅康普順暢飲7入x2盒", price: "NT$ 2,499", link: "https://s.shopee.tw/W7tT06l88", img: "sg-11134201-825b3-mtoy47rnyvpib2.webp" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(24入/盒)x3 韓國原裝｜爆水炸彈膠囊", price: "NT$ 2,280", link: "https://s.shopee.tw/LoTGh7OT7", img: "sg-11134201-8257s-mtoy43j4v2td5f.webp" },
+  { name: "【m2 美度】超能膠原加法膠囊 (30入/盒)x10盒 孫藝珍代言", price: "NT$ 7,111", link: "https://s.shopee.tw/BV34O81o6", img: "sg-11134201-8259u-mtoy3x49fg1tf4.webp" },
+  { name: "【m2 美度】超能膠原新生飲(8入/盒)x1盒 膠原蛋白 青春活源萃取 孫藝珍代言", price: "NT$ 980", link: "https://s.shopee.tw/1Bcs58f95", img: "sg-11134201-825ah-mtoy4fb2rsp44b.webp" },
+  { name: "【m2 美度】超能水光精粹軟膠囊(24入/盒)x10 韓國原裝｜爆水炸彈膠囊", price: "NT$ 7,080", link: "https://s.shopee.tw/2Vsxqfz94a", img: "sg-11134201-825ap-mtoy453ny6fcbc.webp" },
+  { name: "【m2 美度】超能膠原加法膠囊 (30入/盒)x6盒 孫藝珍代言", price: "NT$ 6,320", link: "https://s.shopee.tw/2LZXeMzmPZ", img: "sg-11134201-82598-mtoy3x16ysqs07.webp" },
+  { name: "【m2 美度】超能膠原新生飲 膠原蛋白 青春活源萃取 (1入/盒) 滿額贈贈品 請勿下單", price: "NT$ 199", link: "https://s.shopee.tw/2BG7S40PkY", img: "sg-11134201-8259v-mtoy414dh6h093.webp" },
+  { name: "【m2 美度】超能馬甲果凍(7入/盒)｜馬甲凍 新品搶先體驗", price: "NT$ 980", link: "https://s.shopee.tw/20whFl135X", img: "sg-11134201-8258l-mtoy4259wbno9f.webp" },
+  { name: "【m2 美度】超能馬甲果凍3盒任選多規賣場｜馬甲凍 薑黃暢飲凍 解酒果凍 新品搶先體驗", price: "NT$ 1,111", link: "https://s.shopee.tw/1qdH3S1gQW", img: "sg-11134201-8258e-mtoy3lwuq4nce1.webp" },
+  { name: "【m2 美度】ANYTIME 16:00 亮妍補給組｜經典超能膠原飲8入x2盒+蘋果枸杞亮妍飲7入x2盒", price: "NT$ 2,499", link: "https://s.shopee.tw/1gJqr92JlV", img: "sg-11134201-825ap-mtoy46zhsutfc4.webp" },
+  { name: "【m2 美度】 m2 美度 X MIRAE 未來美  超能膠原新生面膜(3片/盒) (滿額贈品/加購贈品請勿直接下單)", price: "NT$ 599", link: "https://s.shopee.tw/1W0Qeq2x6U", img: "sg-11134201-825a7-mtoy4hifi8060a.webp" },
+  { name: "【m2 美度】PM 22:00 暖暖晚安組｜超能膠原晚安飲8入x2盒+薑汁檸檬代謝飲7入x2盒", price: "NT$ 2,499", link: "https://s.shopee.tw/1Lh0SX3aRT", img: "sg-11134201-8259g-mtoy46sqfythca.webp" },
+  { name: "【m2 美度】韓流超能窈窕錠EX(30錠/盒)/超能馬甲錠EX(30錠/盒)-新版燒卡AB錠 任選賣場", price: "NT$ 980", link: "https://s.shopee.tw/3qOLR7u4My", img: "sg-11134201-825aj-mtoy3wg5rw1t85.webp" },
+  { name: "【m2 美度】超能馬甲果凍(7入/盒)x5盒｜馬甲凍 新品搶先體驗", price: "NT$ 2,280", link: "https://s.shopee.tw/3g4vEouhhx", img: "sg-11134201-82597-mtoy41ysc07b59.webp" },
+  { name: "【m2 美度】AM 10:00 晨間新生組｜超能膠原新生飲8入x2盒＋薑汁檸檬代謝飲7入x2盒", price: "NT$ 2,499", link: "https://s.shopee.tw/3VlV2VvL2w", img: "sg-11134201-8259x-mtoy48e1dwqtb6.webp" },
+  { name: "【m2 美度】My Melody美麗旋律30入獨享盒 (30入/盒) 膠原飲 盲盒 美樂蒂聯名款｜加贈美力旋律吊飾包x1", price: "NT$ 2,680", link: "https://s.shopee.tw/3LS4qCvyNv", img: "tw-11134207-820la-mux619tthf5tea.webp" },
+  { name: "【m2 美度】My Melody美麗旋律膠原飲 兩盒組(8入/2盒)  買一送一 美樂蒂聯名款", price: "NT$ 1,380", link: "https://s.shopee.tw/3B8edtwbiu", img: "tw-11134207-820lg-mux60pk170n9f0.webp" },
+  { name: "BETTER ME 西梅康普順暢飲/薑汁檸檬代謝飲/蘋果枸杞亮妍飲(7入/任選2盒) 買一送一", price: "NT$ 680", link: "https://s.shopee.tw/30pERaxF3t", img: "tw-11134207-820lc-mulyq0xwwohy0b.webp" },
+  { name: "【m2 美度】超能膠原C粉(30入/盒) x11 買四送七", price: "NT$ 5,111", link: "https://s.shopee.tw/2qVoFHxsOs", img: "tw-11134207-820li-mux5z1blw7pf13.webp" },
+  { name: "【m2 美度】超能蔓越莓C(10入/盒)x12盒", price: "NT$ 2,111", link: "https://s.shopee.tw/2gCO2yyVjr", img: "tw-11134207-820l7-mulyofi0amf6a6.webp" },
+  { name: "【m2 美度】珍珠燕窩膠原飲(8入/盒)x24盒｜贈品請選規格｜192包囤貨組 蝦皮獨家販售 孫藝珍代言", price: "NT$ 1.2萬", link: "https://s.shopee.tw/5Atj1ZozfM", img: "tw-11134207-820le-mux6hpscknib12.webp" },
+  { name: "BETTER ME 西梅康普順暢飲/薑汁檸檬代謝飲/蘋果枸杞亮妍飲(7入/任選12盒) 囤貨組", price: "NT$ 3,111", link: "https://s.shopee.tw/50aIpGpd0L", img: "tw-11134207-820l8-mulyqzh6x9fmad.webp" },
+  { name: "【m2 美度】My Melody美麗旋律膠原飲 (8入/盒) 美樂蒂聯名款", price: "NT$ 980", link: "https://s.shopee.tw/4qGscxqGLK", img: "tw-11134207-820l5-mulyrxbr5udc10.webp" }
 ];
 
 const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -158,6 +210,7 @@ document.getElementById('slides').addEventListener('scroll',e=>{
   [...document.getElementById('dots').children].forEach((d,k)=>d.classList.toggle('on',k===i));
 },{passive:true});
 
+document.getElementById('count').textContent=`共 ${products.length} 件`;
 document.getElementById('product-grid').innerHTML=products.map((p,k)=>`
   <article class="product-card">
     ${img(p,k+1)}

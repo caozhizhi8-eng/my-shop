@@ -96,6 +96,49 @@ footer{text-align:center;padding:32px 16px;color:var(--mute);font-size:12px;bord
 <script>
 const HERO_COUNT = 5; // 封面顯示前幾個商品
 const products = [
+  // ── 新增的 40 筆商品 ──
+  { name: "【ParkCat 無敵貓糧】無敵貓糧 1kg/2kg/6kg 鮮雞蜂王乳 霸王野雞 大洋鮮極魚 動力火雞鹿 舒心嫩雞鮭", price: "NT$ 599", link: "https://s.shopee.tw/3B8epCXVk8", cat: "居家生活" },
+  { name: "巴黎萊雅 金緻髮芯精華乳/暖木裸香/金色/棕色/櫻桃/玫瑰護髮精油 (髮油/髮乳) 100ml 3入組 | 官方旗艦店", price: "NT$ 1,211", link: "https://s.shopee.tw/30pEctY957", cat: "美妝保養" },
+  { name: "【高露潔】OPTIC WHITE光感．白牙膏 5%/2%/3%(美白牙齒)", price: "NT$ 499", link: "https://s.shopee.tw/2qVoQaYmQ6", cat: "美妝保養" },
+  { name: "【芊茉堂】【台灣現貨】決明子菊花茶 菊花枸杞茶 菊花決明子茶 菊花茶 牛蒡根養生茶  恢 復茶茶包 花草養生茶 茶葉茶包", price: "NT$ 210", link: "https://s.shopee.tw/2gCOEHZPl5", cat: "食品飲料" },
+  { name: "[Arencia] 綠意清新年糕洗面乳 120g", price: "NT$ 460", link: "https://s.shopee.tw/3qOLcQUyOK", cat: "美妝保養" },
+  { name: "【ParkCat 無敵貓糧】無敵100%原肉凍乾 天然原肉 大罐裝 無敵貓糧 凍乾 犬貓適用 雞肉凍乾 貓咪凍乾 寵物", price: "NT$ 429", link: "https://s.shopee.tw/30pEcyu6Kk", cat: "居家生活" },
+  { name: "【高露潔】全效牙膏150g/95g(4入/6入)15%蝦幣(炭深潔/專業淨白/專業潔淨/專業抗敏感/抗敏護齦/抗牙菌斑)", price: "NT$ 549", link: "https://s.shopee.tw/3fU3qJ0P1v", cat: "美妝保養" },
+  { name: "【Teavoya嘉柏茶業】日本京都抹茶粉 100g｜ 無糖無添加｜濃茶級純抹茶 抹茶拿鐵 宇治抹茶粉 現貨速出", price: "NT$ 320", link: "https://s.shopee.tw/3VlV8wE0xS", cat: "食品飲料" },
+  { name: "【AROMASE艾瑪絲】森系列植萃頭皮洗髮精400mL(茶樹沁涼/強健豐盈/去屑/控油/舒敏 七款任選送淨化液80mL)", price: "NT$ 580", link: "https://s.shopee.tw/3LS50l26xN", cat: "美妝保養" },
+  { name: "【NUNKOL】🔥現貨 隔日達🔥 ☑蝦皮代開☑ UHA 味覺糖 軟糖系列｜鐵 葉酸 鋅 維他命C 葉黃素 膠原蛋白 預購", price: "NT$ 319", link: "https://s.shopee.tw/30pEcyxV0p", cat: "保健美容" },
+  { name: "【高露潔】OPTIC WHITE光感白高純度維他命C牙膏(牙齒美白)_現貨搶購中", price: "NT$ 329", link: "https://s.shopee.tw/4qGt1N0b2w", cat: "美妝保養" },
+  { name: "【咖啡豆熱銷TOP1】咖啡豆 耶加雪菲 單品咖啡 精品咖啡 手沖咖啡 美式咖啡 咖啡 冰咖啡 《熾咖啡烘焙工坊》", price: "NT$ 250", link: "https://s.shopee.tw/40R72x5L19", cat: "食品飲料" },
+  { name: "Dr.Douxi 朵璽 杏仁酸精華液5%/10%/18%/30% 30ml  官方旗艦店", price: "NT$ 499", link: "https://s.shopee.tw/4VPL71k0xS", cat: "美妝保養" },
+  { name: "【KP記憶香氛】空間香氛包/車用香氛｜品牌任選3件75折｜香氛 芳香豆 車用芳香劑 香氛片 香氛袋 車內芳香", price: "NT$ 180", link: "https://s.shopee.tw/50aIv70x2w", cat: "居家生活" },
+  { name: "【高露潔】抗敏專家牙膏4入/8入(1分鐘抗敏)(牙齦護理/抗敏修護琺瑯質/抗敏護齦/長效抗敏/高效亮白)_15%蝦幣回饋", price: "NT$ 699", link: "https://s.shopee.tw/5Atj72x19x", cat: "美妝保養" },
+  { name: "⎮Rough99⎮ Lador 拉朵爾｜微光奇蹟精華油                免沖洗護髮油 深層護髮 護髮 香氛", price: "NT$ 399", link: "https://s.shopee.tw/5g6R71k0xS", cat: "美妝保養" },
+  { name: "The Ordinary 7% 甘醇酸煥膚化妝水 100ml/240ml | 官方旗艦店", price: "NT$ 490", link: "https://s.shopee.tw/60W72x5L19", cat: "美妝保養" },
+  { name: "熱銷第一🏆【真1080P】 KOCA科卡 Joy Lite 1 樂趣機｜投影機 小投影機 智能投影🔥一年保固", price: "NT$ 2,980", link: "https://s.shopee.tw/6fV71k0xS3", cat: "居家生活" },
+  { name: "【Aether依鈦】寵物抗菌噴霧 黴菌剋星 保養皮膚毛髮 乾洗澡 強效除臭 趾間紅保養 無類固醇 各種容量 適用各種毛孩", price: "NT$ 350", link: "https://s.shopee.tw/6q272x5L19", cat: "居家生活" },
+  { name: "【Lysol 來舒】衣物消毒液-白桃&葡萄柚 | 內衣褲 除臭 汗味 室內曬衣 殺菌 內外衣混洗 抗菌液｜官方直營", price: "NT$ 299", link: "https://s.shopee.tw/70M71k0xS3", cat: "居家生活" },
+  { name: "【m2 美度】超能膠原飲(8入/盒) x2盒 快充膠原飲 孫藝珍代言 小姐不熙娣推薦", price: "NT$ 1,380", link: "https://s.shopee.tw/7AelvsHDQI", cat: "保健美容" },
+  { name: "【家電優選★台灣保固】Hysure海說品牌Polo 空氣清淨機 除濕機 空氣清淨機除濕機 除濕 空氣清淨 空氣清淨除濕機", price: "NT$ 1,580", link: "https://s.shopee.tw/7KyC8BGa5N", cat: "居家生活" },
+  { name: "【Aether依鈦】寵物潔耳液 100ml 液態深入耳道清潔 黑耳垢耳蟎可用 抗菌除臭清潔 無酒精不刺激 狗貓鼠兔皆可用", price: "NT$ 300", link: "https://s.shopee.tw/7puSj6Eg4U", cat: "居家生活" },
+  { name: "【SHARECO官方直營】2027新款香水-贈香水吊卡｜任2件9折｜男士香水 男生香水 瘦子香水 木質調香水 專櫃香水", price: "NT$ 1,280", link: "https://s.shopee.tw/7fb2WnFJPT", cat: "美妝保養" },
+  { name: "接骨木莓8益菌 每包含200億好菌 限量特賣 裸包出貨", price: "NT$ 399", link: "https://s.shopee.tw/8AXJ7iDPOa", cat: "保健美容" },
+  { name: "好評熱銷10萬支 雲騰藍牙自拍腳架 全新升級版 5208 手機腳架 相機腳架 直播支架 日落小物", price: "NT$ 299", link: "https://s.shopee.tw/80DsvPE2jZ", cat: "居家生活" },
+  { name: "台灣公司貨【免費試用30天/12h出貨】養生破壁機 果汁機 碎冰機 粉碎機 冷熱雙打破壁機 預約/加熱/保溫/攪打/碎冰", price: "NT$ 1,280", link: "https://s.shopee.tw/8VA9WKC8ig", cat: "居家生活" },
+  { name: "【台灣公司貨】正版 Cmore 寶寶浴站立洗澡架 (可折疊收納) 寶寶週歲禮 手提禮盒 台灣公司貨", price: "NT$ 890", link: "https://s.shopee.tw/8KqjK1Cm3f", cat: "嬰幼兒" },
+  { name: "[Dr.Reju-All 官方] PD2 高效 PDRN 藍銅胜肽精華 30ml | 緊緻, 細紋, 抗老", price: "NT$ 890", link: "https://s.shopee.tw/8pmzuwAs2m", cat: "美妝保養" },
+  { name: "The Ordinary 控油提亮必備組 | 7%甘醇酸煥膚化妝水 & 10%菸鹼醯胺+1%鋅精華 | 官方旗艦店", price: "NT$ 850", link: "https://s.shopee.tw/8fTZidBVNl", cat: "美妝保養" },
+  { name: "【medicube】AGE-R Booster PRO X2 智慧多功能美容儀-韓國美容儀/張員瑛美容儀/水光/導入", price: "NT$ 6,880", link: "https://s.shopee.tw/9APqJY9bMs", cat: "美妝保養" },
+  { name: "限時優惠一單最多1包! 松木貓砂 8MM 每包20公斤 木屑砂 松木砂  松木沙 貓砂 崩解型貓砂 除臭貓砂 兔子 鼠", price: "NT$ 250", link: "https://s.shopee.tw/906Q7FAEhr", cat: "居家生活" },
+  { name: "現貨【可加急配送🐾】贈不鏽鋼碗 可視寵物喂食器 適配多貓家庭 鎖鮮防蟲 遠距遙控餵食 APP控制 畫面可見餐盤 雙電供應", price: "NT$ 1,180", link: "https://s.shopee.tw/9V2giA8Kgy", cat: "居家生活" },
+  { name: "無線電競滑鼠 三模滑鼠 藍牙滑鼠 專屬驅動 RGB磁吸充電底座 22000DPI 63g PAW3311", price: "NT$ 899", link: "https://s.shopee.tw/9KjGVr8y1x", cat: "居家生活" },
+  { name: "【RELOVE】零毛髮美肌組 附刮除海綿 男女適用 私密處 腋下 手腳毛", price: "NT$ 799", link: "https://s.shopee.tw/9pfX6m7414", cat: "美妝保養" },
+  { name: "隔日到貨 精油擴香瓶 室內擴香瓶 擴香補充液 香熏擴香瓶 500ML 附擴香棒 室內客廳香氛 房間香氛 廁所香氛 擴香瓶", price: "NT$ 199", link: "https://s.shopee.tw/9fM6uT7hM3", cat: "居家生活" },
+  { name: "【MOCODO 伴佳家官方】全方位防滑拖鞋 台灣製 防滑拖鞋 老人防滑拖鞋 足底筋膜炎拖鞋 腳底痛拖鞋 居家止滑拖鞋", price: "NT$ 399", link: "https://s.shopee.tw/AAINVO5nLA", cat: "居家生活" },
+  { name: "Dr.Douxi 朵璽 凍齡熬夜奇蹟霜 50ml 官方旗艦館", price: "NT$ 599", link: "https://s.shopee.tw/9zyxJ56Qg9", cat: "美妝保養" },
+  { name: "⎮Rough99⎮ hetras 韓國｜飯店療癒沐浴乳 香氛沐浴乳 沐浴露", price: "NT$ 420", link: "https://s.shopee.tw/AUvDu04WfG", cat: "美妝保養" },
+  { name: "【好來】全亮白雙管極煥白牙膏100g /深導煥白牙膏90g(牙齒美白/1天逆轉白/3天美白)", price: "NT$ 399", link: "https://s.shopee.tw/AKbnhh5A0F", cat: "美妝保養" },
+
+  // ── 原本的 92 樣商品 ──
   { name: "【m2 美度】超能膠原新生飲12入混搭多規賣場 膠原蛋白 青春活源萃取 孫藝珍代言", price: "NT$ 980", link: "https://s.shopee.tw/6q1vXGIU6C", cat: "保健美容" },
   { name: "【m2 美度】超能膠原飲6盒組(8入/盒) 孫藝珍代言", price: "NT$ 3,888", link: "https://s.shopee.tw/6fiVKxJ7RB", img: "2_jpg.webp", cat: "保健美容" },
   { name: "【m2 美度】超能膠原飲(8入/盒) x2盒 快充膠原飲 孫藝珍代言 小姐不熙娣推薦", price: "NT$ 1,380", link: "https://s.shopee.tw/7AelvsHDQI", cat: "保健美容" },
@@ -190,7 +233,7 @@ const products = [
   { name: "【m2 美度】My Melody美麗旋律膠原飲 (8入/盒) 美樂蒂聯名款", price: "NT$ 980", link: "https://s.shopee.tw/4qGscxqGLK", img: "tw-11134207-820l5-mulyrxbr5udc10.webp", cat: "保健美容" }
 ];
 
-const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;0'[m]));
 const cands=(p,i)=>{const b=p.img||(i+'.jpg'),c=[b];
   if(/^sg-/.test(b))c.push(b.replace(/^sg-/,'SG-'));
   if(/^SG-/.test(b))c.push(b.replace(/^SG-/,'sg-'));
